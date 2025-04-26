@@ -278,7 +278,8 @@ class PointNext(nn.Module):
         if exists(category):
             out = out + self.category_emb(category)[:, :, None]
         out = self.head(out)
-        return out
+        pos = feats[-1][1]
+        return out, pos
 
 
 def pointnext_s(**kwargs):
